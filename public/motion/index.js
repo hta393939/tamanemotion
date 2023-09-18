@@ -4,7 +4,14 @@
 
 class Misc {
     init() {
-        console.log('init');        
+        console.log('init');
+        
+        const canvas = document.getElementById('maincanvas');
+        if (canvas) {
+
+        } else {
+            
+        }
     }
 }
 
