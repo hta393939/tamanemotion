@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body {
+    user-select: none;
+}
+
 .pt {
     cursor: pointer;
 }
@@ -18,4 +22,12 @@
     width: 1em;
 }
 
+.drop {
+    font-weight: bold;
+    text-align: center;
+    margin: 1em;
+    border: dashed 4px black;
+    border-radius: 1em;
+    padding: 1em;
+}
 

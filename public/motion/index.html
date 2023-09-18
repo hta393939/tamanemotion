@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title></title>
+        <title>tamane motion</title>
+        <link rel="stylesheet" href="./index.css" />
     </head>
     <body>
         <div>
+            <div>tamane motion</div>
             <div>
                 <canvas id="maincanvas"></canvas>
             </div>
             <div>
-
+                <div class="drop">ここにファイルをドロップする</div>
             </div>
             <div>
                 <button></button>
@@ -23,8 +25,9 @@
 
         <script src="../third_party/three.min.js"></script>
         <script src="../third_party/OrbitControls.js"></script>
+        <script src="../third_party/TrackballControls.js"></script>
+        <script src="./renderer.js"></script>
         <script src="./index.js"></script>
-        <script type="module" src="./index.mjs"></script>
     </body>
 </html>
 
