@@ -27,19 +27,18 @@ class Renderer {
             camera.lookAt(new THREE.Vector3(0, 1, 0));
         }
 
-        /*
         { // object, dom
             const control = new THREE.OrbitControls(this.camera, renderer.domElement);
             this.control = control;
         }
-        */
-        { // object, dom
+        
+        if (false) { // object, dom
             const control = new THREE.TrackballControls(this.camera, param.canvas);
             this.control = control;
         }
 
         {
-            const grid = new THREE.GridHelper(10, 5);
+            const grid = new THREE.GridHelper(20, 10);
             grid.name = 'grid';
             scene.add(grid);
         }

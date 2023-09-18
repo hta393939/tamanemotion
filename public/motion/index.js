@@ -14,15 +14,25 @@ class Misc {
                 canvas,
             };
             const renderer = new Renderer();
+            this.renderer = renderer;
             await renderer.init(param);
-            requestAnimationFrame(() => {
-                renderer.update();
-            });
+            this.update();
         } else {
             
         }
 
     }
+
+    update() {
+        if (this.renderer) {
+            this.renderer.update();
+        }
+
+        requestAnimationFrame(() => {
+            this.update();
+        });
+    }
+
 }
 
 const misc = new Misc();
