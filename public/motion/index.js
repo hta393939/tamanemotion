@@ -33,6 +33,55 @@ class Misc {
         });
     }
 
+/**
+ * 
+ * @param {File} file 
+ */
+    async foo(file) {
+        const text = await file.text();
+        const parser = new GPBXMLParser();
+        const result = await parser.parse(text);
+    }
+
+    addHandler() {
+        {
+/**
+ * @type {HTMLElement}
+ */
+            const el = window.idmain;
+            el?.addEventListener('dragover', (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                ev.dataTransfer.dropEffect = 'copy';
+            });
+            el?.addEventListener('drop', (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                ev.dataTransfer.dropEffect = 'copy';
+
+                
+            });
+        }
+        {
+/**
+ * @type {HTMLElement}
+ */
+            const el = window.idsub;
+            el?.addEventListener('dragover', (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                ev.dataTransfer.dropEffect = 'copy';
+            });
+            el?.addEventListener('drop', (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                ev.dataTransfer.dropEffect = 'copy';
+
+
+            });
+        }
+    }
+
 }
 
 const misc = new Misc();

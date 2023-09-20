@@ -31,3 +31,11 @@ body {
     padding: 1em;
 }
 
+#idmain, #idsub {
+    text-align: center;
+    margin: 1rem;
+    border: dashed 4px black;
+    padding: 1rem;
+}
+
+

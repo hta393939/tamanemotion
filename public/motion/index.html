@@ -10,9 +10,13 @@
             <div>tamane motion</div>
             <div>
                 <canvas id="maincanvas"></canvas>
+                <canvas id="subcanvas"></canvas>
             </div>
             <div>
-                <div class="drop">ここにファイルをドロップする</div>
+                <div id="idmain" class="drop">ここにファイルをドロップする</div>
+            </div>
+            <div>
+                <div id="idsub" class="drop">ここのファイルをドロップする</div>
             </div>
             <div>
                 <button></button>
@@ -26,6 +30,7 @@
         <script src="../third_party/three.min.js"></script>
         <script src="../third_party/OrbitControls.js"></script>
         <script src="../third_party/TrackballControls.js"></script>
+        <script src="../lib/gpbxmlparser.js"></script>
         <script src="./renderer.js"></script>
         <script src="./index.js"></script>
     </body>
