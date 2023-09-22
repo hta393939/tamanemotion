@@ -5,6 +5,8 @@
 class Misc {
     async init() {
         console.log('init');
+
+        this.addHandler();
         
         const canvas = document.getElementById('maincanvas');
         if (canvas) {
@@ -37,7 +39,7 @@ class Misc {
  * 
  * @param {File} file 
  */
-    async foo(file) {
+    async parseXML(file) {
         const text = await file.text();
         const parser = new GPBXMLParser();
         const result = await parser.parse(text);
@@ -59,7 +61,7 @@ class Misc {
                 ev.stopPropagation();
                 ev.dataTransfer.dropEffect = 'copy';
 
-                
+                this.parseXML(ev.dataTransfer.files[0]);
             });
         }
         {
