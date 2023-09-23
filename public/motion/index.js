@@ -41,7 +41,7 @@ class Misc {
  */
     async parseXML(file) {
         const text = await file.text();
-        const parser = new GPBXMLParser();
+        const parser = new GPB.XMLParser();
         const result = await parser.parse(text);
     }
 

@@ -26,7 +26,7 @@ const toFloats = (s) => {
     return ret;
 };
 
-class GPBXMLParser {
+class XMLParser {
     constructor() {
     }
 
@@ -203,7 +203,8 @@ class GPBXMLParser {
     }
 }
 
-globalThis.GPBXMLParser = GPBXMLParser;
+_global.GPB = _global.GPB || {};
+_global.GPB.XMLParser = XMLParser;
 
 })(globalThis);
 

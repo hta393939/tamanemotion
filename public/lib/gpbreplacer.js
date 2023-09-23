@@ -1,5 +1,5 @@
 /**
- * @file gpbparser.js
+ * @file gpbreplacer.js
  */
 
 // 2021/08/07 の最新 4
@@ -11,71 +11,9 @@ const log = {
 };
 
 /**
- * ノードクラス
+ * .gpb アニメ入れ替え
  */
-class GPBNode {
-/**
- * コンストラクタ
- */
-    constructor() {
-/**
- * ノード(ノード)
- * @default 1
- */
-        this.NODE_NODE = 1;
-/**
- * ノード(ジョイント)
- * @default 2
- */
-        this.NODE_JOINT = 2;
-/**
- * ノードタイプ。<br />
- * 1: ノードノード<br />
- * 2: ジョイントノード
- * @type {number}
- */
-        this.nodetype = + this.NODE_NODE;
-/**
- * 16要素配列
- * @type {number[]}
- */
-        this.matrix = [];
-/**
- * 親ノード名(# つかない)
- * @default ""
- */
-        this.parentname = '';
-/**
- * カメラがあるか。ライトがあるか。
- */
-        this.camlight = [0, 0];
-/**
- * モデル名(メッシュ参照名、# で始まる)
- * @default ""
- */
-        this.modelname = '';
-/**
- * 1 だとスキンを持っている
- */
-        this.isskin = 0;
-
-/**
- * 子ノード
- * @type {GPBNode[]}
- */
-        this.children = [];
-/**
- * 材質配列(# つかない)
- * @type {string[]}
- */
-        this.materials = [];
-    }
-}
-
-/**
- * .gpb パーサーにしたい
- */
-class Parser {
+class Replacer {
 /**
  * コンストラクター
  */
@@ -497,10 +435,25 @@ class Parser {
         f_();
     }
 
+/**
+ * 
+ * @param {ArrayBuffer} infile 
+ * @param {{}[]} anims 
+ * @returns {{}[]}
+ */
+    replace(infile, anims) {
+        const p = new DataView(infile);
+
+// アニメーションの部分を作る
+// アニメーションのところを書き換えたい
+
+        return [null, null];
+    }
+
 }
 
 _global.GPB = _global.GPB || {};
-_global.GPB.Parser = Parser;
+_global.GPB.Replacer = Replacer;
 
 } )(globalThis);
 
