@@ -36,13 +36,23 @@ class Misc {
     }
 
 /**
- * 
+ * .xml ファイルをパースする
  * @param {File} file 
  */
     async parseXML(file) {
         const text = await file.text();
         const parser = new GPB.XMLParser();
         const result = await parser.parse(text);
+    }
+
+/**
+ * バイナリファイルをパースする
+ * @param {File} file 
+ */
+    async parseGPB(file) {
+        const ab = await file.arrayBuffer();
+        const parser = new GPB.Parser();
+        const result = await parser.parse(new DataView(ab));
     }
 
     addHandler() {
@@ -79,7 +89,7 @@ class Misc {
                 ev.stopPropagation();
                 ev.dataTransfer.dropEffect = 'copy';
 
-
+                this.parseGPB(ev.dataTransfer.files[0]);
             });
         }
     }

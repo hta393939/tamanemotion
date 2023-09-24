@@ -72,15 +72,170 @@ class GPBNode {
     }
 }
 
+class AnimationChannel {
+    constructor() {
+/**
+ * @type {string}
+ */
+        this._targetId = '';
+/**
+ * @type {string}
+ */
+        this._targetAttrib = '';
+
+        this._keytimes = [];
+        this._values = [];
+/**
+ * @type {number[]}
+ */
+        this.tangentsIn = [];
+/**
+ * @type {number}
+ */
+        this.tangentsOut = [];
+/**
+ * @type {number[]}
+ */
+        this.interpolations = [];
+    }
+}
+
+class Animation {
+    constructor() {
+        this.id = '';
+/**
+ * @type {AnimationChannel[]}
+ */
+        this.channels = [];
+    }
+}
+
+/**
+ * 1つの animations チャンク
+ */
+class Animations {
+    constructor() {
+        this.id = '';
+/**
+ * @type {Animation[]}
+ */
+        this.animations = [];
+    }
+}
+
+
+
+class Node {
+    constructor() {
+        this.id = '';
+        this.type = '';
+        this.transform = [];
+/**
+ * @type {Node[]}
+ */
+        this.children = [];
+    }
+}
+
+class Joint extends Node {
+    constructor() {
+        super();
+
+        this.type = 'JOINT';
+    }
+}
+
+class Scene {
+    constructor() {
+        this.id = '';
+/**
+ * @type {Node[]}
+ */
+        this.nodes = [];
+
+        this.ambientColor = [0, 0, 0];
+    }
+}
+
+class Vertex {
+    constructor() {
+        this.position = [];
+        this.normal = [];
+        this.uv = [];
+
+    }
+}
+
+class VertexElement {
+/**
+ * usage
+ */
+    static POSITION = 'POSITION';
+    static NORMAL = 'NORMAL';
+    static UV0 = 'TEXCOORD0';
+    static WEIGHT = 'BLENDWEIGHTS';
+    static INDICES = 'BLENDINDICES';
+    constructor() {
+        this.usage = '';
+        this.size = 0;
+    }
+}
+
+class Mesh {
+    constructor() {
+        this.id = '';
+    }
+}
+
+/**
+ * https://dev.onionsoft.net/trac/openhsp/browser/trunk/hsp3dish/gameplay/src/Bundle.cpp
+ */
+class Reference {
+    static SCENE = 1;
+    static NODE = 2;
+    static ANIMATIONS = 3;
+    static MESH = 34;
+    static FONT = 128;
+    constructor() {
+        this.xref = '';
+        this.type = 0;
+        this.offset = 0;
+    }
+}
+
+class RefTable {
+    constructor() {
+        this.references = [];
+    }
+}
+
+
 /**
  * .gpb パーサーにしたい
  */
-class Parser {
+class Model {
 /**
  * コンストラクター
  */
     constructor() {
-        this.cl = this.constructor.name;
+/**
+ * @type {RefTable}
+ */
+        this._reftable = null;
+/**
+ * @type {Mesh[]}
+ */
+        this._meshes = [];
+/**
+ * @type {Scene}
+ */
+        this._scene = null;
+/**
+ * @type {Animations}
+ */
+        this._animations = null;
+
+
 
         this.creator = null;
 /**
@@ -477,30 +632,30 @@ class Parser {
         return node;
     }
 
+
 /**
- * API. 
- * @param {string} inurl 
- * @param {Function} onLoad 
- * @param {Function} onProgress 
- * @param {Function} onErr 
+ * 
+ * @param {ArrayBuffer} ab 
  */
-    load(inurl, onLoad, onProgress, onErr) {
-        const f_ = async () => {
-            const res = await fetch(inurl);
-            const ab = await res.arrayBuffer();
-
-            const p = new DataView(ab);
-
-            const gr = this.parse(p, onErr);
-            onLoad(gr);
-        };
-        f_();
+    parseGPB(ab) {
+        const p = new DataView(ab);
     }
 
 }
 
 _global.GPB = _global.GPB || {};
-_global.GPB.Parser = Parser;
+_global.GPB = {
+    AnimationChannel,
+    Animation,
+    Animations,
+    Node,
+    Joint,
+    Mesh,
+    Scene,
+    Reference,
+    RefTable,
+    Model,
+};
 
 } )(globalThis);
 

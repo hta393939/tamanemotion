@@ -26,7 +26,8 @@ const toFloats = (s) => {
     return ret;
 };
 
-class XMLParser {
+
+class XMLParser extends _global.GPB.Parser {
     constructor() {
     }
 
@@ -148,7 +149,7 @@ class XMLParser {
  * xml の内容
  * @param {string} xmltext 
  */
-    parse(xmltext) {
+    parseXML(xmltext) {
         const el = document.createElement('div');
         el.innerHTML = xmltext;
         let root = null;
