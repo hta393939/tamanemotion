@@ -42,7 +42,10 @@ class Misc {
     async parseXML(file) {
         const text = await file.text();
         const parser = new GPB.XMLParser();
-        const result = await parser.parse(text);
+        const result = await parser.parseXML(text);
+        const maker = new GPB.Maker();
+        const model = maker.makeModel(result);
+        this.renderer.scene.add(model);
     }
 
 /**
@@ -52,7 +55,10 @@ class Misc {
     async parseGPB(file) {
         const ab = await file.arrayBuffer();
         const parser = new GPB.Parser();
-        const result = await parser.parse(new DataView(ab));
+        const result = await parser.parseGPB(new DataView(ab));
+        const maker = new GPB.Maker();
+        const model = maker.makeModel(result);
+        this.renderer.scene.add(model);
     }
 
     addHandler() {

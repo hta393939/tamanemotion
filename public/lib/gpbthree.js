@@ -13,7 +13,7 @@ const log = {
 /**
  * threejs モデルを生成する
  */
-class Maker extends _global.GPB.GPBParser {
+class Maker {
 /**
  * コンストラクター
  */
@@ -22,9 +22,10 @@ class Maker extends _global.GPB.GPBParser {
 
 /**
  * 
+ * @param {GPB.Model}
  * @returns {Object}
  */
-    makeModel() {
+    makeModel(inmodel) {
         const gr = { userData: {} };
         gr.userData.gpbscene = {};
         gr.userData.anims = [];
@@ -36,24 +37,7 @@ class Maker extends _global.GPB.GPBParser {
             };
 
             let c = 0;
-            { // マテリアル
 
-            }
-
-            { // ヘッダーとチャンク
-                this.cur = 11;
-
-                const chunkNum = this.r32s(p, 1)[0];
-                log.log('chunkNum', chunkNum);
-                for (let i = 0; i < chunkNum; ++i) {
-                    const obj = {
-                        name: this.rs(p),
-                        type: this.r32s(p, 1)[0],
-                        offset: this.r32s(p, 1)[0],
-                    };
-                    model.chunks.push(obj);
-                }
-            }
             { // メッシュ
                 const meshNum = this.r32s(p, 1)[0];
                 log.log('meshNum', meshNum);
@@ -220,9 +204,7 @@ class Maker extends _global.GPB.GPBParser {
                 }
             }
 
-            console.log('ファイル最終位置', this.cur, '/', p.byteLength);
-
-            log.log('model', model);
+            console.log('makeModel end');
         }
         return gr;
     }

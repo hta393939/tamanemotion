@@ -146,7 +146,7 @@ class XMLParser extends _global.GPB.Parser {
     }
 
 /**
- * xml の内容
+ * API. xml の内容をパースする。
  * @param {string} xmltext 
  */
     parseXML(xmltext) {
